@@ -24,7 +24,7 @@ namespace test
             Button[] allButtons = {this.button1, this.button2, this.button3,
                                     this.button4, this.button5, this.button6,
                                     this.button7, this.button8, this.button9};
-            
+
             if (index < drawnButtons.Count)
             {
                 allButtons[drawnButtons[index]].BackColor = Color.DeepSkyBlue;
@@ -47,19 +47,11 @@ namespace test
             {
                 Application.Exit();
             }
-            if(enabledButtons == false)
+            if (enabledButtons == true)
             {
-                repeatGame();
-                enabledButtons = true;
-            }
-            if (startGame == true)
-            {
-                generateActivButton();
-                startGame = false;
-            }
-            if (index < drawnButtons.Count && enabledButtons == true)
-            {
-                allButtons[drawnButtons[index]].BackColor = Color.Black;
+                this.button1.BackColor = this.button2.BackColor = this.button3.BackColor =
+                this.button4.BackColor = this.button5.BackColor = this.button6.BackColor =
+                this.button7.BackColor = this.button8.BackColor = this.button9.BackColor = Color.Black;
                 index++;
                 showSequence();
             }
@@ -79,8 +71,7 @@ namespace test
             this.button13.Enabled = this.button14.Enabled = this.button15.Enabled =
             this.button16.Enabled = this.button17.Enabled = this.button18.Enabled = true;
             enabledButtons = true;
-            //generateActivButton();
-            startGame = true;
+            generateActivButton();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -90,6 +81,13 @@ namespace test
             {
                 clickedButton.BackColor = Color.DimGray;
                 pressedButton = false;
+            }
+            if (enabledButtons == false)
+            {
+                counter = 0;
+                pictureCounter = 12;
+                repeatGame();
+                enabledButtons = true;
             }
         }
         private void generateActivButton()
@@ -116,6 +114,7 @@ namespace test
                 index = 0;
                 showSequence();
             }
+            timer1.Enabled = true;
         }
 
         private void buttons_Click(object sender, EventArgs e)
@@ -171,31 +170,25 @@ namespace test
         }
         private void lightRightDiods()
         {
-            if (counter == 0)
+            switch (counter)
             {
-                pictureBox3.BackgroundImage = (Image)test.Properties.Resources.diode_on;
-            }
-
-            if (counter == 1)
-            {
-                pictureBox3.BackgroundImage = pictureBox4.BackgroundImage = (Image)test.Properties.Resources.diode_on;
-            }
-
-            if (counter == 2)
-            {
-                pictureBox3.BackgroundImage = pictureBox4.BackgroundImage = pictureBox5.BackgroundImage = (Image)test.Properties.Resources.diode_on;
-            }
-
-            if (counter == 3)
-            {
-                pictureBox3.BackgroundImage = pictureBox4.BackgroundImage = pictureBox5.BackgroundImage =
-                pictureBox6.BackgroundImage = (Image)test.Properties.Resources.diode_on;
-            }
-
-            if (counter == 4)
-            {
-                this.pictureBox3.BackgroundImage = this.pictureBox4.BackgroundImage = this.pictureBox5.BackgroundImage =
-                        this.pictureBox6.BackgroundImage = this.pictureBox7.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                case 0:
+                    pictureBox3.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                    break;
+                case 1:
+                    pictureBox3.BackgroundImage = pictureBox4.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                    break;
+                case 2:
+                    pictureBox3.BackgroundImage = pictureBox4.BackgroundImage = pictureBox5.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                    break;
+                case 3:
+                    pictureBox3.BackgroundImage = pictureBox4.BackgroundImage = pictureBox5.BackgroundImage =
+                    pictureBox6.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                    break;
+                case 4:
+                    this.pictureBox3.BackgroundImage = this.pictureBox4.BackgroundImage = this.pictureBox5.BackgroundImage =
+                    this.pictureBox6.BackgroundImage = this.pictureBox7.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                    break;
             }
             isLight = true;
         }
@@ -204,24 +197,20 @@ namespace test
         {
             pictureBox12.BackgroundImage = (Image)test.Properties.Resources.diode_on;
 
-            if (pictureCounter == 11)
+            switch(pictureCounter)
             {
-                pictureBox11.BackgroundImage = (Image)test.Properties.Resources.diode_on;
-            }
-
-            if (pictureCounter == 10)
-            {
-                pictureBox10.BackgroundImage = (Image)test.Properties.Resources.diode_on;
-            }
-
-            if (pictureCounter == 9)
-            {
-                pictureBox9.BackgroundImage = (Image)test.Properties.Resources.diode_on;
-            }
-
-            if (pictureCounter == 8)
-            {
-                pictureBox8.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                case 11:
+                    pictureBox11.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                    break;
+                case 10:
+                    pictureBox10.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                    break;
+                case 9:
+                    pictureBox9.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                    break;
+                case 8:
+                    pictureBox8.BackgroundImage = (Image)test.Properties.Resources.diode_on;
+                    break;
             }
         }
     }

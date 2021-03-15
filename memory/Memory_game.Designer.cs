@@ -14,12 +14,11 @@ namespace test
         bool pressedButton = false;
         bool isLight = false;
         bool endGame = false;
-        bool startGame = false;
         bool enabledButtons = true;
         private List<int> drawnButtons = new List<int>();
         private List<string> nameDrawnButtons = new List<string>();
         private List<string> selectedButtons = new List<string>();
-        private Button[] buttons = new Button[9];
+        public Button[] buttons = new Button[9];
         private int randomButton;
         private string nameRandomButton;
         private int index = 0;
@@ -449,7 +448,6 @@ namespace test
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 700;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
